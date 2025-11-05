@@ -1,77 +1,100 @@
 analyze_codebase:
-  description:
-    Analyze the codebase at {repo_path} to create a developer-focused
-    technical overview
+  description: |
+    Perform an in-depth analysis of the research-oriented repository located at {repo_path}.
+    The goal is to produce a technical overview that helps other researchers and developers
+    quickly understand the entire codebase, including its architecture, logic, and experimental setup.
 
-    1. Map out the core architecture and components
+    The analysis must include:
 
-    2. Identify key classes, functions and their interactions
+    1. **File & Directory Structure Visualization**
+       - Generate a clean, indented *directory tree chart* similar to what is typically seen in README files.
+       - Clearly show the hierarchy of folders and files (e.g., `models/`, `datasets/`, `utils/`, `scripts/`).
+       - Ignore the .git folder and any virtual environment directories (eg. /venv, /env , .env etc.).
 
-    3. Document APIs and interfaces with usage code examples
+    2. **Functional Understanding**
+       - Determine what each file, script, and module contributes to the project (training, evaluation, dataset preprocessing, visualization, etc.).
+       - Describe how modules depend on each other (e.g., model → dataloader → trainer).
 
-    4. Analyze and diagram data/control flows between components
+    3. **Core Architecture**
+       - Map the core architecture and components of the system (e.g., model architectures, data pipelines, training loops).
+       - Explain research-specific designs (loss functions, model heads, evaluation metrics, etc.).
 
-    5. Note implemented design patterns and their practical applications
+    4. **Key Classes, Functions, and Interactions**
+       - Identify the main functions, classes, and their relationships.
+       - Highlight custom algorithms or implementations that differ from standard approaches.
 
-    6. Identify common usage patterns and integration points
+    5. **Data & Control Flow Diagrams**
+       - Diagram or explain the data flow (e.g., dataset → model → metrics).
+       - Show how control moves through the system during execution.
 
-    7. Ignore Images, Videos, and other media files
+    6. **Design Patterns and Research Methodologies**
+       - Identify any patterns or experimental frameworks (e.g., teacher–student setup, GAN training, self-supervised loops).
+       - Mention practical design decisions relevant to reproducibility or scalability.
 
+    7. **Ignore Non-Textual Files**
+       - Exclude images, videos, model weights, or large data files.
 
-    Focus on details that would help another engineer understand and work
-    with the codebase.
-  expected_output:
-    A technical analysis containing
+    The final output should give an ML engineer or researcher a deep understanding of how the repository is organized and how it works as a research pipeline.
 
-      - What is the project about, what is it meant to do
+  expected_output: |
+    A detailed technical report including:
 
-      - Project overview, deeply explaining the architecture and design
-
-      - Deep documentation of the codebase, with
-
-        - Method signatures and parameters
-
-        - Usage examples and common patterns, using code examples
-
-        - Integration guidelines
-
-        - Explanation of each section
-
-      - Component interaction diagrams
-
-      - Implementation patterns and their use cases
+      - **Repository Overview**: Purpose, goals, and research motivation.
+      - **Directory Tree**: A visual chart of the file/folder hierarchy (like in README files).
+      - **Component Summary**: Explanation of each module, file, and its role in the project.
+      - **Codebase Walkthrough**:
+        - Function/class summaries with parameter insights.
+        - Inline usage examples in code blocks.
+        - Common patterns (e.g., model registration, training loops).
+      - **Architecture & Data Flow**:
+        - Diagrams or structured explanations of how data and control move through the system.
+      - **Experimental Setup**:
+        - Description of how models are trained/tested, what datasets are used, and any special configurations.
+      - **Design Patterns**:
+        - Analysis of architectural or algorithmic design principles used in the research.
 
 create_documentation_plan:
-  description:
-    Develop engineering-focused documentation plan for {repo_path}
+  description: |
+    Based on the analysis of {repo_path}, create a structured **documentation roadmap**
+    tailored for a research-focused codebase.
 
-    The plan should be a list of separate documents, that will be written,
-    and should be ordered by importance and complexity.
+    The plan should propose a set of documentation files that cover the entire project
+    from fundamentals to advanced usage, forming a logical learning path for future contributors.
 
-    Together, they should cover all the important aspects of the codebase,
-    and be written in a way that is easy to understand and follow for a
-    developer.
+    Each document entry should include:
+      - A clear **title**
+      - A **long, meaningful description**
+      - **Prerequisites** (knowledge or setup required)
+      - **Goals** (what the reader will learn or understand)
+      - **Example code snippets** where relevant
+      - The **intended audience** (e.g., new researchers, ML engineers, contributors)
 
-    Each documents should have a thoughtful title, long meaningful description,
-    prerequisites, practical examples using code that are clear and comprehensive
-    goal.
+    The documentation plan must cover:
 
-    Make sure the plan also covers things like
+      1. Comprehensive project overview and research goals.
+      2. System architecture and core design decisions.
+      3. Data pipeline documentation (dataset loading, preprocessing, augmentation).
+      4. Model definitions and architecture explanations.
+      5. Training and evaluation workflows.
+      6. Experiment management (logging, metrics, checkpoints).
+      7. Utilities and helper scripts.
+      8. Reproducibility guidelines (environment, dependencies, seeds).
+      9. Example notebooks or demo guides.
+      10. Extending or modifying the codebase for new experiments.
 
-      - A comprehensive overview
+    The final plan should be ordered by importance and complexity — starting from beginner-level
+    introductions (overview, setup) and moving toward advanced technical deep-dives.
 
-      - System architecture and key design decisions
+  expected_output: |
+    A structured **documentation plan** containing:
 
-      - Core workflows and data flows
-
-      - High-level component interactions
-
-      - Getting started guide
-
-      - Ignore Images, Videos, and other media files
-
-    Focus on creating a clear learning path from overview to advanced topics,
-    and make sure to include all the important aspects of the codebase.
-  expected_output:
-    A documentation plan with a list of documents, ordered by importance and
-    complexity.
+      - **List of proposed documentation files**, each with:
+        - Title
+        - Description
+        - Prerequisites
+        - Code examples (if applicable)
+        - Target audience
+        - Expected outcome
+      - **Recommended directory layout** (e.g., `/docs/architecture/`, `/docs/training/`, etc.)
+      - Logical order of learning — from high-level concepts to detailed technical modules.
+      - Notes on how to link between documents (cross-referencing architecture, model, and dataset sections).

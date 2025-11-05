@@ -1,81 +1,64 @@
 draft_documentation:
-  description:
-    Write a documentation for "{title}", for the codebase at {repo_path}.
-    The main goal is {goal}. Using only verified information from the codebase
-    analysis. Ignore images, videos, and other media files.
+  description: |
+    Generate comprehensive documentation for **"{title}"** based on the verified codebase at **{repo_path}**.
+    Focus strictly on factual, code-derived information — exclude all media (images, videos, etc).
 
-    Project overview
-    {overview}
+    Include:
+      - **Project Overview:** {overview}
+      - **High-Level Description:** {description}
+      - **Prerequisites:** {prerequisites}
+      - **Examples:** {examples}
 
-    High level documentation description for {title}
-    {description}
+    Requirements:
+      - Derive all details solely from code and verified analysis.
+      - Use `mermaid` diagrams (not images) to represent architectures, flows, and relationships.
+      - Highlight module hierarchies, dependencies, and workflows.
+      - Reference actual filenames, classes, or functions wherever possible.
 
-    Prerequisites
-    {prerequisites}
+  expected_output: |
+    ✅ **Expected Output:**
+    A clear, factual Markdown document about {title} at {repo_path}, containing:
+      - Section headers matching real code structure
+      - Accurate technical explanations and code references
+      - Verified code examples (no pseudocode)
+      - Verified setup and usage instructions
+      - `mermaid` diagrams for relationships and flows
 
-    Examples
-    {examples}
-
-    Use mermaid art diagrams instead of images to represent flows and
-    relationships.
-
-    Ignore Images, Videos, and other media files.
-
-  expected_output: >
-    A factual Markdown documentation that includes only verified information
-    about {title} that is relevant to the codebase at {repo_path}.
-    Use mermaid art diagrams to visualize component relationships and flows.
-    Don't wrap the documentation in fences or meta-commentary.
-
-    The documentation must include this like:
-      - Section headers matching actual code structure
-      - Thoughtful explanations with code references
-      - Code examples from the actual codebase
-      - Setup instructions verified against the code
-      - mermaid art diagrams for visual representations (no images)
+    Notes:
+      - Do **not** wrap the output in code fences or add meta-commentary.
+      - Exclude any speculative, unimplemented, or media-based content.
 
 qa_review_documentation:
-  description:
-    Review and validate the draft documentation for "{title}" against the
-    actual codebase at {repo_path}.
-    Also make sure to check existing documentation files for consistency and
-    accuracy.
-    Ignore images, videos, and other media files.
-    We should not have duplicate documentation.
+  description: |
+    Review and fact-check the documentation for **"{title}"** against the codebase at **{repo_path}**.
+    Ensure the documentation is accurate, consistent, and complete — aligned fully with implementation.
+    Ignore images, videos, and unverified external data.
 
-    1. Technical Accuracy
-       - Verify all architectural descriptions match implementation
-       - Validate component relationships and interactions
-       - Cross-reference code examples with tests and actual usage
-       - Confirm mermaid diagrams reflect real data/control flows
+    Review Checklist:
+      1. **Technical Accuracy**
+         - Architectural descriptions match actual code
+         - Component interactions and relationships are valid
+         - Code examples reflect real functions/tests
+         - `mermaid` diagrams show true control/data flows
+      2. **Completeness**
+         - All major modules, workflows, and integrations are covered
+         - No undocumented or duplicate sections
+      3. **Quality**
+         - Remove speculative or outdated content
+         - Ensure examples and setup steps match real usage
+      4. **Consistency**
+         - Terminology and naming align with source code
+         - Code snippets follow project’s actual style
+      5. **Diagram Validation**
+         - All diagram elements exist in the codebase
+         - Flow direction and hierarchy accurately represent logic
+         - Wrap mermaid blocks in ```mermaid``` syntax
 
-    2. Documentation Completeness
-       - Verify coverage of key components
-       - Check all documented workflows exist in code
-       - Ensure integration patterns match implementation
-       - Confirm troubleshooting scenarios are accurate
-
-    3. Documentation Quality
-       - Remove any speculative or unimplemented features
-       - Update examples to match current code patterns
-       - Ensure mermaid diagrams enhance understanding
-
-    4. Technical Consistency
-       - Align terminology with codebase conventions
-       - Verify component names match implementation
-       - Validate code style in examples
-
-    5. Diagram Validation
-       - Validate that all diagram components exist in codebase
-       - Check that flow directions accurately represent system behavior
-       - Mermaid blocks should be wrapped in ```mermaid```
-  expected_output: >
-    A thoroughly validated markdown documentation for {title} that:
-    - Is 100% aligned with the implementation at {repo_path}
-    - Contains only verified code examples and workflows
-    - Has correct mermaid diagrams representing actual system flows
-    - Maintains consistent technical terminology
-    - Don't wrap the documentation in fences or meta-commentary.
-    - Ignore Images, Videos, and other media files.
-
-    The output should be pure markdown without fences or meta-commentary.
+  expected_output: |
+    ✅ **Expected Output:**
+    A corrected and validated Markdown documentation for {title} that:
+      - Reflects 100% accurate implementation details from {repo_path}
+      - Contains verified examples and workflows only
+      - Uses valid `mermaid` diagrams consistent with system behavior
+      - Maintains uniform terminology and formatting
+      - Contains no commentary, speculative text, or code fences
